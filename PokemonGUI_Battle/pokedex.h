@@ -61,7 +61,7 @@ PImage getFrontImage(int _pokemonNum)
   else
     _pokemonNum -= 1;
   String filename;
-  filename += "f_";
+  filename += "small/f_";
   filename += _pokemonNum;
   filename += ".bmp";
 

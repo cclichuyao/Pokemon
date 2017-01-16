@@ -117,7 +117,8 @@ void viewMyPokemon();
 
 
 
-int startPokemonID[6]={1,2,3,65,78,149};
+int startPokemonID[6]={1,2,3,65,66,67};
+int selection=0;
 
 
 void initialMenuFunctionDecider();

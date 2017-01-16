@@ -194,17 +194,18 @@ void drawInfoMenu()
 void infoMenuCursor()
 {
  
-
-  
-  
   static int cursorRow=10;
   // save the height of the screen
   int myHeight = EsploraTFT.height();
   // map the paddle's location to the joystick's position 
   int yAxis = map(Esplora.readJoystickY(), -512, 512, 0, myHeight);
+  
+  EsploraTFT.stroke(0,0,0);
+  EsploraTFT.text(">",57,cursorRow);
 
-    EsploraTFT.stroke(255,255,255);
-    EsploraTFT.text(">",57,cursorRow);
+  EsploraTFT.stroke(255,255,255);
+  EsploraTFT.text(">",57,cursorRow);
+    
     if(yAxis>80 && cursorRow<110)
     {
       EsploraTFT.stroke(0,0,0);
@@ -236,18 +237,26 @@ void infoMenuCursor()
       case 50: idNum=2;break;
       case 70: idNum=3;break;
       case 90: idNum=4;break;
-      case 110: idNum=6;break;
+      case 110: idNum=5;break;
     }
-     PImage myPokemonImg=getFrontImage(startPokemonID[idNum]);
-     EsploraTFT.image(myPokemonImg,0,50);
+     
+     //if new selcetion
+     
+     if(selection!=cursorRow)
+     {
+     PImage myPokemonImg=getFrontImage(startPokemonID[idNum]+1);
+     EsploraTFT.image(myPokemonImg,0,60);
      myPokemonImg.close();
+     selection=cursorRow;
+     }
+     //endif
 
     //if(cursorRow<10) cursorRow=10;
     //if(cursorRow>110) cursorRow=110;
   
 }
 
-void infoMMM()
+void infoMenuRoutine()
 {
   byte infoMenuCheck=1;
       drawInfoMenu();
