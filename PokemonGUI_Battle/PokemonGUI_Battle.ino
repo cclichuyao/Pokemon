@@ -60,20 +60,7 @@ void loop()
     
     if(masterMenu.lineID>2)
     {
-      byte infoMenuCheck=1;
-      drawInfoMenu();
-      while(infoMenuCheck)
-      {
-//        static bool testy = false; 
-//        if(testy==false) testy=true;
-//        else testy=false;
-        
-    //if(testy) Esplora.writeRGB(255,255,255);
-    //else Esplora.writeRGB(0,0,0);
-        infoMenuCursor();
-        if(Esplora.readButton(SWITCH_DOWN) == LOW)
-          infoMenuCheck=0;
-      }
+      infoMMM();
     }
 
 

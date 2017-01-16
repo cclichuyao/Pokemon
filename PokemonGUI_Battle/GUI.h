@@ -115,10 +115,10 @@ void drawInfoMenu()
 
   int levels[6]={1,22,3,4,5,6};
   //I initialize some pokemons, which you can put your start pokemon here
-  int startPokemonID[]={1,2,3,65,78,149};
   
   
   
+  String pokemon_data[6];
 
   int yPos=10;
   String pokemons[6];
@@ -239,11 +239,27 @@ void infoMenuCursor()
       case 110: idNum=6;break;
     }
      PImage myPokemonImg=getFrontImage(startPokemonID[idNum]);
-     EsploraTFT.image(myPokemonImg,10,60);
+     EsploraTFT.image(myPokemonImg,0,50);
      myPokemonImg.close();
 
     //if(cursorRow<10) cursorRow=10;
     //if(cursorRow>110) cursorRow=110;
   
 }
+
+void infoMMM()
+{
+  byte infoMenuCheck=1;
+      drawInfoMenu();
+      while(infoMenuCheck)
+      {
+
+        infoMenuCursor();
+        if(Esplora.readButton(SWITCH_DOWN) == LOW)
+          infoMenuCheck=0;
+      }
+}
 #endif
+
+
+

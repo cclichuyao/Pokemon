@@ -115,7 +115,9 @@ pokemon currentPokemon[] = {};
 void selectStarterPokemon();
 void viewMyPokemon();
 
-String pokemon_data[6];
+
+
+int startPokemonID[6]={1,2,3,65,78,149};
 
 
 void initialMenuFunctionDecider();
