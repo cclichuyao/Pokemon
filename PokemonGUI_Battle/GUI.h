@@ -85,7 +85,11 @@ void buildMenu(int _id, menu_t * m)
 }
 
 
-void infoMenu()
+String pokemon_data[6];
+
+
+  
+void drawInfoMenu()
 {
   char playerName[]={"ASH"};
   int winNum=10;
@@ -106,16 +110,62 @@ void infoMenu()
   EsploraTFT.text("lost:",10,40);
   EsploraTFT.text(lostOut.c_str(),40,40);
 
+  //if you are using starterPokemon in globals using the code below
+  //String pokemons[6]={starterPokemon[0].name,starterPokemon[1].name,starterPokemon[2].name,starterPokemon[3].name,starterPokemon[4].name,starterPokemon[5].name};
+
 
   int levels[6]={1,22,3,4,5,6};
-  String pokemons[6]={"Pikachu","Electabuzz","Mew","Zubat","Pidgeotto","Charmander"};
-  int yPos=10;
+  //I initialize some pokemons, which you can put your start pokemon here
+  int startPokemonID[]={1,2,3,65,78,149};
+  
+  
 
+  int yPos=10;
+  String pokemons[6];
+  TypeID type[6];
 
 
   //PRINT OUT PLAYER AND POKEMON INFORMATION
   for(int i=0;i<6;++i)
   {
+   
+    pokemon_data[i] =loadData(startPokemonID[i]-1, ' ', 40, "pokedex.TXT");
+    type[i]=getType(pokemon_data[i]);
+    pokemons[i]= getName(pokemon_data[i]);
+
+
+    switch(type[i])
+    {
+      case POISON:
+        EsploraTFT.stroke(130,0,75); break;//indigo
+      case NORMAL:
+        EsploraTFT.stroke(130,255,255); break;//white
+      case GRASS:
+        EsploraTFT.stroke(0,255,0); break;//green
+      case FIRE:
+        EsploraTFT.stroke(0,0,255); break;//red
+      case ELECTRIC:
+        EsploraTFT.stroke(0,255,255); break;//yellow
+      case GROUND:
+        EsploraTFT.stroke(65,77,90); break;//ground brown
+      case ROCK:
+        EsploraTFT.stroke(98,98,98); break;//dark grey
+      case ICE:
+        EsploraTFT.stroke(230,224,176); break;//light blue
+      case FIGHTING:
+        EsploraTFT.stroke(48,48,129); break;//dark red
+      case PSYCHIC:
+        EsploraTFT.stroke(0,204,204); break;//greenish yellow
+      case BUG:
+        EsploraTFT.stroke(102,255,102); break;//light green
+      case DRAGON:
+        EsploraTFT.stroke(0,0,102);break; //dark red
+      case GHOST:
+        EsploraTFT.stroke(128,128,128); break;//grey
+      case WATER:
+        EsploraTFT.stroke(0,0,255); break;//blue
+
+    }
    
     EsploraTFT.text(pokemons[i].c_str(),65,yPos);
 
@@ -135,6 +185,18 @@ void infoMenu()
   EsploraTFT.rect(55,6, 104, 120);
 
 
+
+
+
+
+}
+
+void infoMenuCursor()
+{
+ 
+
+  
+  
   static int cursorRow=10;
   // save the height of the screen
   int myHeight = EsploraTFT.height();
@@ -165,6 +227,10 @@ void infoMenu()
 
       delay(100);
     }
+    
+//     PImage myPokemonImg=getFrontImage(4);
+//     EsploraTFT.image(myPokemonImg,10,60);
+//     myPokemonImg.close();
 
     //if(cursorRow<10) cursorRow=10;
     //if(cursorRow>110) cursorRow=110;

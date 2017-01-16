@@ -76,45 +76,46 @@ struct pokemon
 pokemon currentPokemon[] = {};
 //pokemon starterPokemon[] = {};
 
-pokemon starterPokemon[] = 
-{
-  {
-    "Charmander",                         // Name
-    FIRE,                                 // Type
-    90,                                    // Health
-    0,                                    // EV
-    0,                                    // XP
-    {nullptr, nullptr, nullptr, nullptr}, // Move id's
-    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
-    false                                     // Active
-  },
-  {
-    "Squirtle",                           // Name
-    WATER,                                // Type
-    0,                                    // Health
-    0,                                    // EV
-    0,                                    // XP
-    {nullptr, nullptr, nullptr, nullptr}, // Move id's
-    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
-    false                                     // Active
-  },
-  {
-    "Bulbasaur",                          // Name
-    GRASS,                                // Type
-    0,                                    // Health
-    0,                                    // EV
-    0,                                    // XP
-    {nullptr, nullptr, nullptr, nullptr}, // Move id's
-    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
-    false                                     // Active
-  },
+//pokemon starterPokemon[] = 
+//{
+//  {
+//    "Charmander",                         // Name
+//    FIRE,                                 // Type
+//    90,                                    // Health
+//    0,                                    // EV
+//    0,                                    // XP
+//    {nullptr, nullptr, nullptr, nullptr}, // Move id's
+//    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
+//    false                                     // Active
+//  },
+//  {
+//    "Squirtle",                           // Name
+//    WATER,                                // Type
+//    0,                                    // Health
+//    0,                                    // EV
+//    0,                                    // XP
+//    {nullptr, nullptr, nullptr, nullptr}, // Move id's
+//    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
+//    false                                     // Active
+//  },
+//  {
+//    "Bulbasaur",                          // Name
+//    GRASS,                                // Type
+//    0,                                    // Health
+//    0,                                    // EV
+//    0,                                    // XP
+//    {nullptr, nullptr, nullptr, nullptr}, // Move id's
+//    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
+//    false                                     // Active
+//  },
   
-};
+  
+//};
 
 void selectStarterPokemon();
 void viewMyPokemon();
 
-
+String pokemon_data[6];
 
 
 void initialMenuFunctionDecider();

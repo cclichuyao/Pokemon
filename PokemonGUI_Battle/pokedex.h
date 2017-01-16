@@ -97,7 +97,7 @@ String getType_str(String &_PokemonData)
 
 TypeID getType(String &_PokemonData)
 {
-    int typeNum;
+  int typeNum;
   String type = _PokemonData.substring(0,2);
   typeNum = type.toInt();
   switch(typeNum)

@@ -11,39 +11,39 @@
 //Once the ID's is filled the pokemon will be opted to replace a ID with a differnet ID
 //Each time a pokemon learns/rejects a new move from levelling up the the MoveUsed array will change the move from 0 to 1
 //To show that the move has been learnt/rejected
-pokemon starterPokemon[] = 
-{
-  {
-    "Charmander",                         // Name
-    FIRE,                                 // Type
-    90,                                    // Health
-    0,                                    // EV
-    0,                                    // XP
-    {nullptr, nullptr, nullptr, nullptr}, // Move id's
-    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
-    false                                     // Active
-  },
-  {
-    "Squirtle",                           // Name
-    WATER,                                // Type
-    0,                                    // Health
-    0,                                    // EV
-    0,                                    // XP
-    {nullptr, nullptr, nullptr, nullptr}, // Move id's
-    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
-    false                                     // Active
-  },
-  {
-    "Bulbasaur",                          // Name
-    GRASS,                                // Type
-    0,                                    // Health
-    0,                                    // EV
-    0,                                    // XP
-    {nullptr, nullptr, nullptr, nullptr}, // Move id's
-    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
-    false                                     // Active
-  },
-  
+//pokemon starterPokemon[] = 
+//{
+//  {
+//    "Charmander",                         // Name
+//    FIRE,                                 // Type
+//    90,                                    // Health
+//    0,                                    // EV
+//    0,                                    // XP
+//    {nullptr, nullptr, nullptr, nullptr}, // Move id's
+//    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
+//    false                                     // Active
+//  },
+//  {
+//    "Squirtle",                           // Name
+//    WATER,                                // Type
+//    0,                                    // Health
+//    0,                                    // EV
+//    0,                                    // XP
+//    {nullptr, nullptr, nullptr, nullptr}, // Move id's
+//    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
+//    false                                     // Active
+//  },
+//  {
+//    "Bulbasaur",                          // Name
+//    GRASS,                                // Type
+//    0,                                    // Health
+//    0,                                    // EV
+//    0,                                    // XP
+//    {nullptr, nullptr, nullptr, nullptr}, // Move id's
+//    {0, 0, 0, 0, 0, 0, 0, 0},             // Used moves
+//    false                                     // Active
+//  },
+//  
 };
 
 

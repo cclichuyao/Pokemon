@@ -33,6 +33,9 @@ void setup()
 
 void loop() 
 {
+
+    
+
     if(Esplora.readButton(SWITCH_RIGHT) == LOW)
     {
       clearScreen();
@@ -51,17 +54,32 @@ void loop()
       
       renderMenu(masterMenu);
     }
+
+
+    
     
     if(masterMenu.lineID>2)
     {
       byte infoMenuCheck=1;
+      drawInfoMenu();
       while(infoMenuCheck)
       {
-        infoMenu();
+//        static bool testy = false; 
+//        if(testy==false) testy=true;
+//        else testy=false;
+        
+    //if(testy) Esplora.writeRGB(255,255,255);
+    //else Esplora.writeRGB(0,0,0);
+        infoMenuCursor();
         if(Esplora.readButton(SWITCH_DOWN) == LOW)
           infoMenuCheck=0;
       }
     }
+
+
+
+
+    
      switchRow(masterMenu);
 
   
