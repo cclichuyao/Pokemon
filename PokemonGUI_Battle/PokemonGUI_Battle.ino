@@ -2,6 +2,7 @@
 #include "Globals.h"
 #include "GUI.h"
 #include "pokedex.h"
+#include "battleSystem.h"
 //#include "statsSystem.h"
 //PImage img;
 int _currentMenu;
@@ -60,7 +61,8 @@ void loop()
     
     if(masterMenu.lineID>2)
     {
-      infoMenuRoutine();
+      //infoMenuRoutine();
+        renderBattleDisplay();
     }
 
 

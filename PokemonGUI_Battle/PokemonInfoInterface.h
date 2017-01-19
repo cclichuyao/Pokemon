@@ -1,94 +1,32 @@
-#ifndef GUI_H
-#define GUI_H
+#include <LiquidCrystal.h>
 
-#include "Globals.h"
-#include "pokedex.h"
+// include the necessary libraries
+#include <Esplora.h>
+#include <TFT.h>            // Arduino LCD library
+#include <SPI.h>
 
-//#define RGBNAME
+void setup() {
 
-void clearScreen()
-{
-  EsploraTFT.background(0,0,0);
-}
-
-void renderMenu(menu_t m)
-{ 
-  int row = 0;
-
-  EsploraTFT.stroke(255,255,255);
-  EsploraTFT.setTextSize(2);
-
-  for(int i = 0; i < m.elements; i++)
-  {
-    
-      // draw i element of the menu
-    EsploraTFT.text(m.element[i].c_str(),25,row);
-
-    // draws next element on next row
-    row+=30;
-  }
-}
-
-void switchRow(menu_t m)
-{
-   // save the height of the screen
-  int myHeight = EsploraTFT.height();
-
-  // map the paddle's location to the joystick's position 
  
-  yAxis = map(Esplora.readJoystickY(), -512, 512, 0, myHeight);
+  EsploraTFT.begin();
 
-  // use joystick position to move cursor up and down menu
- if( yAxis>120 && m.elements>3 )
- {
-  cursorRow=90;
- }
- // if there are less then 2 rows the cursor wont go past row 2
- else if(yAxis>=100 && yAxis<120 && m.elements>2)
- {
-  cursorRow=60;
- }
- else if(yAxis>=80 && yAxis<100 && m.elements>1)
- {
-  cursorRow=30;
- }
- else if(yAxis>=64 && yAxis<80)
- {
-  cursorRow=0;
- }
+  // clear the screen with a black background
+  EsploraTFT.background(0,0,0);
 
- //initial position 64
+  
 
- // draws cursor
- EsploraTFT.setTextSize(2);
- EsploraTFT.stroke(255,255,255);
- EsploraTFT.text("->",0,cursorRow);
-
- EsploraTFT.stroke(0,0,0);
- EsploraTFT.text("->",0,cursorRow);
   
 }
 
-void buildMenu(int _id, menu_t * m)
-{
-    String loadedMenu = loadData(_id, '|', 64, "menuDB.TXT");
-    char * data = (char*)loadedMenu.c_str();
+void loop() {
   
-    m->elements = getElementsNumber(loadedMenu);;
-    
-    for(int i = 0; i < m->elements; ++i)
-    {
-      m->element[i] = getMenuElementName(i, loadedMenu);
-      m->next[i] = getMenuElement(i, loadedMenu);
-    
-    }
-    m->lineID=_id;
+ 	infoMenuRoutine();
 }
 
 
 
+//ADD THIS IN GUI.H
 
-  
 void drawInfoMenu()
 {
   char playerName[]={"ASH"};
@@ -134,7 +72,7 @@ void drawInfoMenu()
     type[i]=getType(pokemon_data[i]);
     pokemons[i]= getName(pokemon_data[i]);
 
-    #ifdef RGBNAME
+
     switch(type[i])
     {
       case POISON:
@@ -167,8 +105,7 @@ void drawInfoMenu()
         EsploraTFT.stroke(0,0,255); break;//blue
 
     }
-    #endif
-    
+   
     EsploraTFT.text(pokemons[i].c_str(),65,yPos);
 
     int instLen=strlen(pokemons[i].c_str())*6;
@@ -270,7 +207,26 @@ void infoMenuRoutine()
           infoMenuCheck=0;
       }
 }
-#endif
 
 
 
+//ADD THIS IN INO FILE
+//if(masterMenu.lineID>2)
+//{
+//	infoMenuRoutine();
+//}
+
+
+
+//ADD THIS IN GLOBAL.H
+//int startPokemonID[6]={1,2,3,65,66,67};
+//int selection=0;
+//I INITIALISED A SET OF POKEMON ID, CHANGE THIS IF YOU WANT
+
+
+
+//ALSO YOU NEED TO CHANGE POKEDEX
+//FROM   filename += "f_";
+//TO     filename += "small/f_";
+//IN ORDER TO LOAD THE SMALL IMAGE
+    

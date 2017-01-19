@@ -223,6 +223,100 @@ int calcDamage(moves_t* attack, pokemon _myPokemon, pokemon _enemyPokemon)
 
 
 
+void renderBattleText(char *first, char *second, char *third)
+{
+    int xPos1 = (160 / 2) - (strlen(first) * 12 / 2);
+    int xPos2 = (160 / 2) - (strlen(second) * 12 / 2);
+    int xPos3 = (160 / 2) - (strlen(third) * 12 / 2);
+    EsploraTFT.setTextSize(2);
+    EsploraTFT.stroke(255, 255, 255);
+    EsploraTFT.text(first, xPos1, 30);
+    delay(500);
+    EsploraTFT.text(second, xPos2, 50);
+    delay(500);
+    EsploraTFT.text(third, xPos3, 70);
+}
+
+void renderBattleDisplay()
+{
+  bool enemyTurn = true; 
+  bool hostTurn = true;
+
+  // When the function will be added need to change to the map from 0 to 80.
+  
+  uint8_t healthbarSize = 75;
+  
+  uint8_t enemyHealth = map(80, 0, 100, 0, healthbarSize); 
+  uint8_t hostHealth = map(39, 0, 100, 0, healthbarSize); 
+
+  uint8_t enemyTextX = 10;
+  uint8_t enemyTextY = 10;
+
+  uint8_t hostTextX = 85;
+  uint8_t hostTextY = 98;
+
+  uint8_t textColor[3] = {255,255,255};
+  uint8_t enemyColor[3] = {255,0,0};
+  uint8_t hostColor[3] = {0,0,255};
+  
+
+  EsploraTFT.background(0,0,0);
+
+  //Enemy stats
+  EsploraTFT.setTextSize(1);
+
+  //Enemy stats rect 
+  // TODO: Change to color depending on a poketype
+  EsploraTFT.stroke(enemyColor[0],enemyColor[1],enemyColor[2]);
+  EsploraTFT.fill(enemyColor[0],enemyColor[1],enemyColor[2]);
+  EsploraTFT.rect(enemyTextX - 5, enemyTextY - 5, 75, 30); 
+
+    //Enemy image
+  EsploraTFT.rect(95, 5, 55, 55);
+
+  //Enemy healthbar
+  EsploraTFT.fill(0, 255, 0);
+  EsploraTFT.noStroke();
+  EsploraTFT.rect(enemyTextX - 5, enemyTextY + 26, enemyHealth, 8);
+  EsploraTFT.noFill();
+  EsploraTFT.stroke(255, 255, 255);
+  EsploraTFT.rect(enemyTextX - 5, enemyTextY + 26, healthbarSize, 8);
+
+
+  // Host poke name
+  EsploraTFT.stroke(textColor[0],textColor[1],textColor[2]);
+  EsploraTFT.text("ENEMY!",enemyTextX, enemyTextY);
+  // Host stats 
+  EsploraTFT.text("Lv08 male", enemyTextX, enemyTextY + 12);
+
+
+
+  //Host Stats
+  EsploraTFT.stroke(hostColor[0],hostColor[1],hostColor[2]);
+  EsploraTFT.fill(hostColor[0],hostColor[1],hostColor[2]);
+  EsploraTFT.rect(hostTextX - 5, hostTextY - 5, 75, 30);
+
+    //Host image
+  EsploraTFT.rect(5, 58, 65, 65);
+
+    //Host healthbar
+  EsploraTFT.fill(0, 255, 0);
+  EsploraTFT.noStroke();
+  EsploraTFT.rect(hostTextX - 5, hostTextY - 14, hostHealth, 8);
+  EsploraTFT.noFill();
+  EsploraTFT.stroke(255, 255, 255);
+  EsploraTFT.rect(hostTextX - 5, hostTextY - 14, healthbarSize, 8);
+   
+  // Host name
+  EsploraTFT.setTextSize(1); 
+  EsploraTFT.stroke(textColor[0],textColor[1],textColor[2]);
+  EsploraTFT.text(starterPokemon[selectedPokemon].name, hostTextX, hostTextY);
+  // Host stats 
+  EsploraTFT.text("Lv08 woman", hostTextX, hostTextY + 12);
+}
+
+
+
 
 
 #endif
